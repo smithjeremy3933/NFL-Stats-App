@@ -1,22 +1,21 @@
-import React, {Component} from 'react'
+import React, {Component, useEffect, useState} from 'react'
 import styled from "styled-components";
 
-class Standings extends Component {
-    constructor(props) {
-        super(props);
+function Standings() {
+
+        useEffect(() => {
+            fetchStandings();
+        },[]);
         
+        const fetchStandings = async () => {
+            const data = await fetch('https://api.sportsdata.io/v3/nfl/scores/json/Standings/%7B2019%7D?key=e785706d32a54b8f850c248da415cb73')
+            const currentStandings = await data.json()
+            console.log(currentStandings[0].Name);
+        }
 
-    }
+   
 
-    render() {
-        this.props.leagueStandings ? 
-        console.log(this.props.leagueStandings[0].Name) 
-        : 
-        console.log("No Standings")
-
-        // let AFC_Conference = this.props.patriotsStats.Conference
-        // let EAST_Division = this.props.patriotsStats.Division
-        // let patriotsName = this.props.patriotsStats.Name
+   
         
         return (
             <div className="jumbotron text-center">
@@ -52,7 +51,7 @@ class Standings extends Component {
                 </div>
             </div>
         )
-    }
+    
 }
 
 export default Standings;

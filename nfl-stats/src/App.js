@@ -20,17 +20,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let standingsQueryURL =  `https://api.sportsdata.io/v3/nfl/scores/json/Standings/%7B2019%7D?key=e785706d32a54b8f850c248da415cb73`
-
-    fetch(standingsQueryURL).then((response) => {
-      return response.json();
-    }).then((standingData) => {
-      console.log(standingData);
-      this.setState({
-        standings: standingData,
-        patriotsStandings: standingData[0]
-      })
-    })
 
     let newsQueryURL =  `https://api.sportsdata.io/v3/nfl/scores/json/News?key=e785706d32a54b8f850c248da415cb73`
 
