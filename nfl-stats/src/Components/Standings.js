@@ -1,21 +1,26 @@
 import React, {Component, useEffect, useState} from 'react'
 import styled from "styled-components";
 
-function Standings() {
-
-        useEffect(() => {
-            fetchStandings();
-        },[]);
-        
-        const fetchStandings = async () => {
-            const data = await fetch('https://api.sportsdata.io/v3/nfl/scores/json/Standings/%7B2019%7D?key=e785706d32a54b8f850c248da415cb73')
-            const currentStandings = await data.json()
-            console.log(currentStandings[0].Name);
-        }
+class Standings extends Component {
+    constructor(props) {
+        super(props);
+        // const fetchStandings = async () => {
+        //     const data = await fetch('https://api.sportsdata.io/v3/nfl/scores/json/Standings/%7B2019%7D?key=e785706d32a54b8f850c248da415cb73')
+        //     console.log(data);
+        // }
+    }
 
    
 
-   
+    render() {
+        this.props.leagueStandings ? 
+        console.log(this.props.leagueStandings[0].Name) 
+        : 
+        console.log("No Standings")
+
+        // let AFC_Conference = this.props.patriotsStats.Conference
+        // let EAST_Division = this.props.patriotsStats.Division
+        // let patriotsName = this.props.patriotsStats.Name
         
         return (
             <div className="jumbotron text-center">
@@ -51,7 +56,7 @@ function Standings() {
                 </div>
             </div>
         )
-    
+    }
 }
 
 export default Standings;

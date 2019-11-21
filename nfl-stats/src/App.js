@@ -15,7 +15,8 @@ class App extends Component {
     super(props);
     this.state = {
       standings: [],
-      patriotsStandings: ""
+      patriotsStandings: "",
+      articles:[]
     }
   }
 
@@ -41,7 +42,7 @@ class App extends Component {
         <div>
           <Nav/>
             <Switch>
-              <Route path="/" exact component= {News}/>
+              <Route path="/" exact component= {News} articles = {this.state.articles}/>
               <Route path="/fantasy" component = {Fantasy}/>
               <Route path="/standings" component = {Standings} leagueStandings={this.state.standings} patriotsStats = {this.state.patriotsStandings}/>
             </Switch>
