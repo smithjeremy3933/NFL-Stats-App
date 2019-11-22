@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Nav from './Components/Nav'
-import Fantasy from './Components/Fantasy'
+import Fantasy from './Components/Fantasy/Fantasy'
 import FantasyPlayer from './Components/FantasyPlayer'
 import Standings from './Components/Standings';
 import News from './Components/News'
