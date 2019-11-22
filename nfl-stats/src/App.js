@@ -4,6 +4,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Nav from './Components/Nav'
 import Fantasy from './Components/Fantasy'
+import FantasyPlayer from './Components/FantasyPlayer'
 import Standings from './Components/Standings';
 import News from './Components/News'
 import Scores from './Components/Scores'
@@ -22,17 +23,6 @@ class App extends Component {
 
   componentDidMount() {
 
-    let newsQueryURL =  `https://api.sportsdata.io/v3/nfl/scores/json/News?key=e785706d32a54b8f850c248da415cb73`
-
-    fetch(newsQueryURL).then((response) => {
-      return response.json();
-    }).then((newsData) => {
-      console.log(newsData);
-    //   this.setState({
-
-    //   })
-    // console.log(this.state.standings)
-    })
   }
 
 
@@ -43,8 +33,10 @@ class App extends Component {
           <Nav/>
             <Switch>
               <Route path="/" exact component= {News} articles = {this.state.articles}/>
-              <Route path="/fantasy" component = {Fantasy}/>
-              <Route path="/standings" component = {Standings} leagueStandings={this.state.standings} patriotsStats = {this.state.patriotsStandings}/>
+              <Route path="/fantasy" exact component = {Fantasy}/>
+              <Route path="/fantasy/:id" component={FantasyPlayer}/>
+              <Route path="/standings" component = {Standings}/>
+              
             </Switch>
         </div>
       </Router>
