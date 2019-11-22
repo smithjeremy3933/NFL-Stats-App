@@ -8,8 +8,12 @@ class Fantasy extends Component {
         super(props);
         this.state = {
             ownershipData: [],
-            playerData:[]
+            playerData:[],
+            rawPlayerData: []
+
         }
+
+    
     }
 
     componentDidMount() {
@@ -34,21 +38,48 @@ class Fantasy extends Component {
         //   console.log(this.state.playerData)
         })
     }
+
+    getTopFiveRBs = () => {
+        let rawPlayerData = this.state.playerData;
+        var RBArray = rawPlayerData.filter(function (el) {
+            return el.ProjectedFantasyPoints > 10 &&
+                   el.Position === "RB" // Changed this so a home would match
+        });
+        var topFiveRBs = RBArray.slice(0, 5).map(RBArray => {
+            return RBArray.Name
+            
+        });
+        this.setState({ rawPlayerData: RBArray.Name })
+        console.log(topFiveRBs);
+    }
     
 
     render() {
         let rawPlayerData = this.state.playerData;
 
-        rawPlayerData ? console.log(rawPlayerData) : console.log("No Player Data")
+        // rawPlayerData ? console.log(rawPlayerData) : console.log("No Player Data")
 
-        var newArray = rawPlayerData.filter(function (el) {
+        var QBArray = rawPlayerData.filter(function (el) {
+            return el.ProjectedFantasyPoints > 10 &&
+                   el.Position === "QB" // Changed this so a home would match
+        });
+        var RBArray = rawPlayerData.filter(function (el) {
             return el.ProjectedFantasyPoints > 10 &&
                    el.Position === "RB" // Changed this so a home would match
         });
-        console.log(newArray)
-        var topFiveRBs = newArray.slice(0, 5).map(newArray => {
-            return <div item = {newArray.name}/>
+        // console.log(QBArray)
+        // console.log(RBArray)
+        var topFiveQBs = QBArray.slice(0, 5).map(QBArray => {
+            return QBArray.Name
         })
+        var topFiveRBs = RBArray.slice(0, 5).map(RBArray => {
+            return RBArray.Name
+            
+        })
+
+    
+        // console.log(topFiveQBs)
+        // console.log(topFiveRBs)
         return(
             <div className="container">
                 <div id="topFiveContainer">
@@ -60,7 +91,7 @@ class Fantasy extends Component {
                             <button>QB</button>
                         </div>
                         <div className="col">
-                            <button>RB</button>
+                            <button onClick={this.getTopFiveRBs}>RB</button>
                         </div>
                         <div className="col">
                             <button>WR</button>
@@ -70,9 +101,10 @@ class Fantasy extends Component {
                         </div>
                     </div>
                     <div id="topFivePlayerDisplay">
-                        {newArray.slice(0, 5).map(newArray => (
-                        <h3>{newArray.Name}</h3>
-                        ))}
+                        {/* {QBArray.slice(0, 5).map(QBArray => (
+                        <h3>{QBArray.Name}</h3>
+                        ))} */}
+                        <h3>{topFiveQBs}</h3>
                     </div>
                 </div>
                 <div>
