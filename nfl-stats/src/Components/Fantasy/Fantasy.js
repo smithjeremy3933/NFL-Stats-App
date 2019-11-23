@@ -11,13 +11,11 @@ class Fantasy extends Component {
             playerData:[],
             rawPlayerData: [],
             currentPlayers: []
-
         }
-
-    
     }
 
     componentDidMount() {
+        
         let dailyFantasyPlayerQueryURL =  `https://api.sportsdata.io/v3/nfl/stats/json/PlayerOwnership/2019REG/11?key=e785706d32a54b8f850c248da415cb73`
         fetch(dailyFantasyPlayerQueryURL).then((response) => {
           return response.json();
