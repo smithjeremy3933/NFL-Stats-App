@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import styled from "styled-components";
 import {Link} from 'react-router-dom'
 import './style.css'
 
@@ -76,7 +75,7 @@ class Fantasy extends Component {
         console.log(this.state.playerData)
 
         var AllOwnershipArray = rawOwnershipData.filter(function (el) {
-            return el.DeltaOwnershipPercentage > 12
+            return el.DeltaOwnershipPercentage > 15
         });
         console.log(AllOwnershipArray)
         // rawPlayerData ? console.log(rawPlayerData) : console.log("No Player Data")
@@ -103,7 +102,7 @@ class Fantasy extends Component {
         // console.log(topFiveQBs)
         // console.log(topFiveRBs)
         return(
-            <div className="container">
+            <div id="fantasyContainer" className="container">
                 <div id="topFiveContainer">
                     <div className="row">
                         <div className="col">

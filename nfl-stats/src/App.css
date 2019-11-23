@@ -20,3 +20,14 @@
 .App-link {
   color: #09d3ac;
 }
+
+body {
+  /* background-color: blue; */
+  background: url("footballFieldBackground.jpg");
+  background-size: cover;
+  min-height: calc(94vh - 70px);
+}
+
+#backgroundContainer {
+  min-height: calc(94vh - 70px);
+}

@@ -1,3 +1,14 @@
+#fantasyContainer {
+    border: solid;
+    border-color: black;
+    border-width: 4px;
+    border-radius: 15px;
+    height: 100%;
+    background-color: aliceblue;
+    margin-top: 20px;
+    padding: 10px;
+}
+
 #topFiveContainer {
     border: solid;
     border-width: 4px;
@@ -11,6 +22,7 @@
     border-width: 4px;
     border-color: black;
     border-radius: 15px;
+    margin-top: 10px;
 }
 
 .card {

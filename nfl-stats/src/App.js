@@ -4,10 +4,11 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Nav from './Components/Nav'
 import Fantasy from './Components/Fantasy/Fantasy'
-import FantasyPlayer from './Components/FantasyPlayer'
+import FantasyPlayer from './Components/FantasyPlayer/FantasyPlayer'
 import Standings from './Components/Standings';
 import News from './Components/News'
-import Scores from './Components/Scores'
+import Scores from './Components/Scores/Scores'
+import Footer from './Components/Footer/Footer'
 
 
 
@@ -29,8 +30,9 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div id="backgroundContainer">
           <Nav/>
+          <Scores/>
             <Switch>
               <Route path="/" exact component= {News} articles = {this.state.articles}/>
               <Route path="/fantasy" exact component = {Fantasy}/>
@@ -38,6 +40,7 @@ class App extends Component {
               <Route path="/standings" component = {Standings}/>
               
             </Switch>
+          <Footer/>
         </div>
       </Router>
     )
