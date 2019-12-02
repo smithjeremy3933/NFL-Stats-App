@@ -10,7 +10,7 @@ class Nav extends Component {
 
     render() {
         return(
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <h2>NFL Stats</h2>
             <ul>
                 <Link to="/">
@@ -21,6 +21,9 @@ class Nav extends Component {
                 </Link>
                 <Link to= "/fantasy">
                     <li>Fantasy</li>
+                </Link>
+                <Link to= "/fantasy-comparison">
+                    <li>Fantasy Comparison</li>
                 </Link>
             </ul>
         </nav>

@@ -5,10 +5,12 @@ import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Nav from './Components/Nav'
 import Fantasy from './Components/Fantasy/Fantasy'
 import FantasyPlayer from './Components/FantasyPlayer/FantasyPlayer'
+import FantasyComparison from './Components/FantasyComparison/FantasyComparison'
 import Standings from './Components/Standings';
 import News from './Components/News'
 import Scores from './Components/Scores/Scores'
 import Footer from './Components/Footer/Footer'
+// import QuarterbackColumn from './Components/QuarterbackColumn/QuarterbackColumn'
 
 
 
@@ -16,14 +18,12 @@ class App extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      standings: [],
-      patriotsStandings: "",
-      articles:[]
+      selectedPlayers: []
     }
   }
 
   componentDidMount() {
-
+ 
   }
 
 
@@ -34,9 +34,10 @@ class App extends Component {
           <Nav/>
           <Scores/>
             <Switch>
-              <Route path="/" exact component= {News} articles = {this.state.articles}/>
+              <Route path="/" exact component= {News}/>
               <Route path="/fantasy" exact component = {Fantasy}/>
               <Route path="/fantasy/:id" component={FantasyPlayer}/>
+              <Route path="/fantasy-comparison" component={FantasyComparison} currentPlayerList = {this.state.selectedPlayers}/>
               <Route path="/standings" component = {Standings}/>
               
             </Switch>

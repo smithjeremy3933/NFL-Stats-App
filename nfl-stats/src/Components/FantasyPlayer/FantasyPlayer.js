@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import './style.css'
 
+
 class FantasyPlayer extends Component {
     constructor(props) {
         super(props);
@@ -8,8 +9,27 @@ class FantasyPlayer extends Component {
             playerSeasonStats:[],
             playerWeeklyStats:[],
             fantasyPlayerName: "",
+            fantasyPlayerTeam: "",
+            fantasyPlayerPosition: "",
+            fantasyPlayerSeasonDK_FP : 0,
             fantasyPlayerSeasonFD_FP: 0,
-            fantasyPlayerWeeklyFD_FP: 0
+            fantasyPlayerSeasonYOO_FP: 0,
+            fantasyPlayerSeasonPassingYards: 0,
+            fantasyPlayerSeasonPassingTouchdowns: 0,
+            fantasyPlayerSeasonRushingYards: 0,
+            fantasyPlayerSeasonRushingTouchdowns: 0,
+            fantasyPlayerSeasonReceivingYards: 0,
+            fantasyPlayerSeasonReceivingTouchdowns: 0,
+            fantasyPlayerWeeklsDK_FP : 0,
+            fantasyPlayerWeeklyFD_FP: 0,
+            fantasyPlayerWeeklyYOO_FP: 0,
+            fantasyPlayerWeeklyPassingYards: 0,
+            fantasyPlayerWeeklyPassingTouchdowns: 0,
+            fantasyPlayerWeeklyRushingYards: 0,
+            fantasyPlayerWeeklyRushingTouchdowns: 0,
+            fantasyPlayerWeeklyReceivingYards: 0,
+            fantasyPlayerWeeklyReceivingTouchdowns: 0
+            
         }
 
         
@@ -24,20 +44,38 @@ class FantasyPlayer extends Component {
           this.setState({
             playerSeasonStats: PSSData,
             fantasyPlayerName: PSSData.Name,
-            fantasyPlayerSeasonFD_FP: PSSData.FantasyPointsFanDuel
+            fantasyPlayerTeam: PSSData.Team,
+            fantasyPlayerPosition: PSSData.Position,
+            fantasyPlayerSeasonDK_FP : PSSData.FantasyPointsDraftKings,
+            fantasyPlayerSeasonFD_FP: PSSData.FantasyPointsFanDuel,
+            fantasyPlayerSeasonYOO_FP: PSSData.FantasyPointsYahoo,
+            fantasyPlayerSeasonPassingYards: PSSData.PassingYards,
+            fantasyPlayerSeasonPassingTouchdowns: PSSData.PassingTouchdowns,
+            fantasyPlayerSeasonRushingYards: PSSData.RushingYards,
+            fantasyPlayerSeasonRushingTouchdowns: PSSData.RushingTouchdowns,
+            fantasyPlayerSeasonReceivingYards: PSSData.ReceivingYards,
+            fantasyPlayerSeasonReceivingTouchdowns: PSSData.ReceivingTouchdowns
           })
           console.log(this.state.fantasyPlayerName)
           console.log(this.state.fantasyPlayerSeasonFD_FP)
         })
 
-        let playerWeeklyStatsQueryURL =  `https://api.sportsdata.io/v3/nfl/projections/json/PlayerGameProjectionStatsByPlayerID/2019REG/12/${this.props.match.params.id}?key=e785706d32a54b8f850c248da415cb73`
+        let playerWeeklyStatsQueryURL =  `https://api.sportsdata.io/v3/nfl/projections/json/PlayerGameProjectionStatsByPlayerID/2019REG/13/${this.props.match.params.id}?key=e785706d32a54b8f850c248da415cb73`
         fetch(playerWeeklyStatsQueryURL).then((response) => {
           return response.json();
         }).then((PWSData) => {
           console.log(PWSData);
           this.setState({
             playerWeeklyStats: PWSData,
-            fantasyPlayerWeeklyFD_FP:PWSData.FantasyPointsFanDuel
+            fantasyPlayerWeeklyDK_FP : PWSData.FantasyPointsDraftKings,
+            fantasyPlayerWeeklyFD_FP: PWSData.FantasyPointsFanDuel,
+            fantasyPlayerWeeklyYOO_FP: PWSData.FantasyPointsYahoo,
+            fantasyPlayerWeeklyPassingYards: PWSData.PassingYards,
+            fantasyPlayerWeeklyPassingTouchdowns: PWSData.PassingTouchdowns,
+            fantasyPlayerWeeklyRushingYards: PWSData.RushingYards,
+            fantasyPlayerWeeklyRushingTouchdowns: PWSData.RushingTouchdowns,
+            fantasyPlayerWeeklyReceivingYards: PWSData.ReceivingYards,
+            fantasyPlayerWeeklyReceivingTouchdowns: PWSData.ReceivingTouchdowns
           })
           console.log(this.state.fantasyPlayerWeeklyFD_FP)
         //   console.log(this.props)
@@ -48,8 +86,27 @@ class FantasyPlayer extends Component {
         event.preventDefault();
         fetch("http://localhost:8000/api/new-player", {
             body: JSON.stringify({ player_name: this.state.fantasyPlayerName,
-                                   player_weekly_FD_FP: this.state.fantasyPlayerSeasonFD_FP,
-                                   player_season_FD_FP:this.state.fantasyPlayerSeasonFD_FP }),
+                                   player_team: this.state.fantasyPlayerTeam,
+                                   player_position: this.state.fantasyPlayerPosition,
+                                   player_weekly_DK_FP: this.state.fantasyPlayerWeeklyDK_FP,
+                                   player_weekly_FD_FP: this.state.fantasyPlayerWeeklyFD_FP,
+                                   player_weekly_YOO_FP: this.state.fantasyPlayerWeeklyYOO_FP,
+                                   player_weekly_passingYards: this.state.fantasyPlayerWeeklyPassingYards,
+                                   player_weekly_passingTouchdowns: this.state.fantasyPlayerWeeklyPassingTouchdowns,
+                                   player_weekly_rushingYards: this.state.fantasyPlayerWeeklyRushingYards,
+                                   player_weekly_rushingTouchdowns: this.state.fantasyPlayerWeeklyRushingTouchdowns,
+                                   player_weekly_receivingYards: this.state.fantasyPlayerWeeklyReceivingYards,
+                                   player_weekly_receivingTouchdowns: this.state.fantasyPlayerWeeklyReceivingTouchdowns,
+
+                                   player_season_DK_FP: this.state.fantasyPlayerSeasonDK_FP,
+                                   player_season_FD_FP: this.state.fantasyPlayerSeasonFD_FP,
+                                   player_season_YOO_FP: this.state.fantasyPlayerSeasonYOO_FP,
+                                   player_season_passingYards: this.state.fantasyPlayerSeasonPassingYards,
+                                   player_season_passingTouchdowns: this.state.fantasyPlayerSeasonPassingTouchdowns,
+                                   player_season_rushingYards: this.state.fantasyPlayerSeasonRushingYards,
+                                   player_season_rushingTouchdowns: this.state.fantasyPlayerSeasonRushingTouchdowns,
+                                   player_season_receivingYards: this.state.fantasyPlayerSeasonReceivingYards,
+                                   player_season_receivingTouchdowns: this.state.fantasyPlayerSeasonReceivingTouchdowns }),
             method: "POST",
             headers: { 
                 'Content-Type': 'application/json',

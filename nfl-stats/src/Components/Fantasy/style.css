@@ -1,13 +1,27 @@
 #fantasyContainer {
-    border: solid;
+    /* border: solid;
     border-color: black;
     border-width: 4px;
     border-radius: 15px;
+    background-color: #1E90FF; */
     height: 100%;
-    background-color: aliceblue;
     margin-top: 20px;
     margin-bottom: 20px;
     padding: 10px;
+}
+
+#comparisonContainerHeaderText {
+    width: 98%;
+    margin-left: 1%;
+    margin-top: 1%;
+    background-color: rgb(1, 82, 1);
+    color: white;
+    text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+    border-radius: 10px;
+    padding: 2%;
+    border: solid;
+    border-width: 4px;
+    border-color: white;
 }
 
 #playerComparisonContainer {
@@ -16,32 +30,248 @@
     border-width: 4px;
     border-color: black;
     border-radius: 15px;
+    background-color: #1E90FF;
+}
+
+#comparisonInnerContainer {
+    width: 98%;
+    height: 100%;
+    border: solid;
+    border-width: 4px;
+    border-color: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+    background-color: rgb(1, 82, 1);
+    margin-left: 1%;
+    padding-bottom: 2%;
+    padding-top: 2%;
+}
+
+#fantasyTeamButtonDisplay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#conferenceHeader {
+    margin-left: 5%;
+    color: white;
+    text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+}
+
+.btn-secondary {
+    background-color: rgb(214, 143, 12);;
+    width: 70%;
+}
+
+.btn-group {
+    width: 38%;
+    margin-left: 3%;
+}
+
+#bottomButtonRow {
+    margin-top: 3%;
+}
+
+#playerDisplayHeaderText {
+    margin-left: 20%;
+    color: white;
+    text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+}
+
+#fantasyPlayersDisplay {
+    width: 98%;
+    padding: 1%;
+    border: solid;
+    border-width: 4px;
+    border-color: white;
+    border-radius: 10px;
+    /* margin-right: 1%; */
+    margin-left: 1%;
+    margin-bottom: 1%;
+    background-color: rgb(1, 82, 1);
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+}
+
+#currentPlayerCard {
+    background: rgb(214, 143, 12);
+    border-radius: 10px;
+    border: solid;
+    border-width: 4px;
+    border-color: black;
+    height: 10%;
+    margin: 2%;
+    position: relative;
+    width: 80%;
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+    text-align: center;
+    color: white;
+    text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
 }
 
 #topFiveContainer {
     width: 100%;
+    height: 100%;
     border: solid;
     border-width: 4px;
     border-color: black;
     border-radius: 15px;
+    margin-top: 25px;
+    background-color: #1E90FF;
+    /* background-color: rgb(1, 82, 1); */
+}
+
+#topFiveInnerContainer {
+    display: flex;
+    justify-content: center;
+    width: 98%;
+    margin: 10px;
+    padding: 1%;
+    border-radius: 10px;
+    background-color: rgb(1, 82, 1);
+    border: solid;
+    border-width: 4px;
+    border-color: white;
+}
+
+#topFiveHeader {
+    color: white;
+    text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+}
+
+
+#topFiveButton {
+    margin-top: 30%;
+    width: 90%;
+    background-color: rgb(214, 143, 12);
+    color: white;
+    text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+    border: solid;
+    border-width: 3px;
+    border-color: black;
+}
+
+#topFivePlayerDisplayContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#topFivePlayerDisplay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    background-color: rgb(1, 82, 1);
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+    border: solid;
+    border-width: 4px;
+    border-color: white;
+    border-radius: 10px;
+    margin-bottom: 3%;
+    margin-top: 1%;
+    padding: 1%;
 }
 
 #ownershipContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     border: solid;
     border-width: 4px;
     border-color: black;
     border-radius: 15px;
-    margin-top: 10px;
+    margin-top: 25px;
+    background-color: #1E90FF;
+    /* background-color: rgb(1, 82, 1); */
 }
 
-.card {
-    background: #fff;
+
+#ownershipInnerContainer {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+    border: solid;
+    border-width: 4px;
+    border-color: white;
     border-radius: 10px;
+    width: 80%;
+    background-color: rgb(1, 82, 1);
+    margin-bottom: 1%;
+    margin-top: 1%;
+    padding: 1%;
+}
+
+#ownershipRow {
+    width: 100%;
+}
+
+#topTrendingHeaderBox {
+    background-color: rgb(1, 82, 1);
+    margin-top: 1%;
+    margin-bottom: 2%;
+    border: solid;
+    border-width: 4px;
+    border-color: white;
+    border-radius: 10px;
+    width: 99%;
+}
+
+#topTrendingHeaderText {
+    color: white;
+    text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+}
+
+#playerOwnershipNameText {
+    color: white;
+    text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+}
+
+
+#playerCard {
+    background: rgb(214, 143, 12);
+    border-radius: 10px;
+    border: solid;
+    border-width: 4px;
+    border-color: black;
     height: 80px;
     margin: 1rem;
     position: relative;
-    width: 90%;
+    width: 380px;
     box-shadow: 0 3px 6px #999, 0 3px 6px #999;
-    text-align: left;
-  }
+    /* text-align: left; */
+    transition: all .6s ease-in-out;
+}
+
+#topFivePlayerNameText {
+    color: white;
+    text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+}
+
+#statText {
+    color: white;
+    text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+}
+
+.hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+    transform: scale(1.1);
+}
