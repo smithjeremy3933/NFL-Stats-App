@@ -61,7 +61,7 @@ class FantasyPlayer extends Component {
           console.log(this.state.fantasyPlayerSeasonFD_FP)
         })
 
-        let playerWeeklyStatsQueryURL =  `https://api.sportsdata.io/v3/nfl/projections/json/PlayerGameProjectionStatsByPlayerID/2019REG/13/${this.props.match.params.id}?key=395dd5f8805a4e85baeb9951f01813e6`
+        let playerWeeklyStatsQueryURL =  `https://api.sportsdata.io/v3/nfl/projections/json/PlayerGameProjectionStatsByPlayerID/2019REG/14/${this.props.match.params.id}?key=395dd5f8805a4e85baeb9951f01813e6`
         fetch(playerWeeklyStatsQueryURL).then((response) => {
           return response.json();
         }).then((PWSData) => {

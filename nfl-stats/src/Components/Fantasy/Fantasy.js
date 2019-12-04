@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import SearchForm from '../SearchForm'
 import axios from 'axios'
 import './style.css'
 import * as Scroll from 'react-scroll';
@@ -54,7 +53,7 @@ class Fantasy extends Component {
 
     componentDidMount() {
         // old api call = e785706d32a54b8f850c248da415cb73
-        let dailyFantasyPlayerQueryURL =  `https://api.sportsdata.io/v3/nfl/stats/json/PlayerOwnership/2019REG/13?key=395dd5f8805a4e85baeb9951f01813e6`
+        let dailyFantasyPlayerQueryURL =  `https://api.sportsdata.io/v3/nfl/stats/json/PlayerOwnership/2019REG/14?key=395dd5f8805a4e85baeb9951f01813e6`
         fetch(dailyFantasyPlayerQueryURL).then((response) => {
           return response.json();
         }).then((DFPData) => {
@@ -64,7 +63,7 @@ class Fantasy extends Component {
           })
         })
 
-        let topFivePlayersQueryURL =  `https://api.sportsdata.io/v3/nfl/stats/json/DailyFantasyPlayers/2019-NOV-30?key=395dd5f8805a4e85baeb9951f01813e6`
+        let topFivePlayersQueryURL =  `https://api.sportsdata.io/v3/nfl/stats/json/DailyFantasyPlayers/2019-DEC-2?key=395dd5f8805a4e85baeb9951f01813e6`
         fetch(topFivePlayersQueryURL).then((response) => {
           return response.json();
         }).then((TFPData) => {
@@ -988,8 +987,8 @@ class Fantasy extends Component {
                             <div className="row">
                                 <div className="col-sm-6">
                                     <div id="scrollBox">
-                                        <ScrollLink activeClass="active" to="firstInsideContainer" spy={true} smooth={true} duration={250} containerId="containerElement" style={{ display: 'inline-block', margin: '20px' }}>
-                                        Go to first element inside container
+                                        <ScrollLink className="text-center" activeClass="active" to="firstInsideContainer" spy={true} smooth={true} duration={250} containerId="containerElement" style={{ margin: '20px' }}>
+                                            <button id="backToTopScrollButton" className="hvr-grow">Back to Top!</button>
                                         </ScrollLink>
 
                                         <Element name="test7" className="element" id="containerElement" style={{
@@ -998,25 +997,36 @@ class Fantasy extends Component {
                                         overflow: 'scroll',
                                         // marginBottom: '100px'
                                         }}>
-                                        <div>   
+                                        <div id="innerScrollBox">   
                                             <Element name="firstInsideContainer" style={{
                                             marginBottom: '1px'
                                             }}>
-                                            <h3>Current Search List:</h3>
+                                            <h3 id="searchText" className="text-center">Current Search List:</h3>
                                             </Element>
                                             {filteredData.map(slicedData => {
-                                                                return (<h4>{slicedData.Name}</h4>)
-                                                            })}</div>
+                                                return (<Link id="currentPlayerCard" className="hvr-grow" to={`/fantasy/${slicedData.PlayerID}`}><h4  className="text-center">{slicedData.Name}</h4></Link>)
+                                            })}</div>
                                         </Element>
                                 </div>
                             </div>
                             <div className="col-sm-6">
                                 <div id="inputContainer">
-                                    <form>
-                                        <input
-                                        onChange={this.updateSearch.bind(this)}
-                                        value={this.state.search}/>
-                                    </form>
+                                    <div className="row">
+                                        <div className="col-sm-12">
+                                            <h4 id="searchText" className="text-center">Search For A Player!</h4>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-sm-12">
+                                            <form>
+                                                <input
+                                                id="searchInput"
+                                                className="form-control form-control-lg"
+                                                onChange={this.updateSearch.bind(this)}
+                                                value={this.state.search}/>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
