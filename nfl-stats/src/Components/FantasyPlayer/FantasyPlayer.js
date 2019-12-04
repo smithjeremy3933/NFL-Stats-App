@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import './style.css'
+import NFLLogo from "./NFL-Logo.jpg"
 
 
 class FantasyPlayer extends Component {
@@ -36,7 +37,7 @@ class FantasyPlayer extends Component {
     }
 
     componentDidMount() {
-        let playerSeasonStatsQueryURL =  `https://api.sportsdata.io/v3/nfl/projections/json/PlayerSeasonProjectionStatsByPlayerID/2019REG/${this.props.match.params.id}?key=e785706d32a54b8f850c248da415cb73`
+        let playerSeasonStatsQueryURL =  `https://api.sportsdata.io/v3/nfl/projections/json/PlayerSeasonProjectionStatsByPlayerID/2019REG/${this.props.match.params.id}?key=395dd5f8805a4e85baeb9951f01813e6`
         fetch(playerSeasonStatsQueryURL).then((response) => {
           return response.json();
         }).then((PSSData) => {
@@ -60,7 +61,7 @@ class FantasyPlayer extends Component {
           console.log(this.state.fantasyPlayerSeasonFD_FP)
         })
 
-        let playerWeeklyStatsQueryURL =  `https://api.sportsdata.io/v3/nfl/projections/json/PlayerGameProjectionStatsByPlayerID/2019REG/13/${this.props.match.params.id}?key=e785706d32a54b8f850c248da415cb73`
+        let playerWeeklyStatsQueryURL =  `https://api.sportsdata.io/v3/nfl/projections/json/PlayerGameProjectionStatsByPlayerID/2019REG/13/${this.props.match.params.id}?key=395dd5f8805a4e85baeb9951f01813e6`
         fetch(playerWeeklyStatsQueryURL).then((response) => {
           return response.json();
         }).then((PWSData) => {
@@ -144,20 +145,20 @@ class FantasyPlayer extends Component {
                 <div id="fantasyPlayerHeader" className="container-fluid">
                     <div className="row">
                         <div className="col-sm-2">
-                            <h1>{rawPlayerSeasonStats.Position}</h1>
+                            <h1 id="indFantasyPlayer">{rawPlayerSeasonStats.Position}</h1>
                         </div>
                         <div className="col-sm-8 text-center">
                             {
                                 rawPlayerSeasonStats ?
-                                <h1>{rawPlayerSeasonStats.Name} ({isPlayerActive})</h1>
+                                <h1 id="indFantasyPlayer">{rawPlayerSeasonStats.Name} ({isPlayerActive})</h1>
                                 :
                                 <h1>Loading...</h1>
                             }
                             
                         </div>
                         <div className="col-sm-2">
-                            <h1>{rawPlayerSeasonStats.Team}</h1>
-                            <button onClick={this.handleSavePlayer}>SAVE</button>
+                            <h1 id="indFantasyPlayer">{rawPlayerSeasonStats.Team}</h1>
+                            <button id="saveButton" className="hvr-grow" onClick={this.handleSavePlayer}>SAVE PLAYER</button>
                         </div>
                     </div>
                 </div>
@@ -165,48 +166,48 @@ class FantasyPlayer extends Component {
                 <div id="fantasyPointsDisplay">
                     <div className="row">
                         <div className="col-sm-6">
-                            Team Image
+                            <img id="playerImage" src={NFLLogo}/>
                         </div>
                         <div className="col-sm-6">
                             <h3>Week 12 Fantasy Stats:</h3>
                             <div className="row">
-                                <div className="col">
+                                <div className="col-sm-4">
                                     <div id="draftKingsWeeklyFantasyPoints">
-                                        <p>Draft Kings Fantasy Points:</p>
-                                        <h3>{rawPlayerWeeklyStats.FantasyPointsDraftKings}</h3>
+                                        <p id="fantasyWeeklyStatsText">Draft Kings Fantasy Points:</p>
+                                        <h3 id="fantasyWeeklyStats">{rawPlayerWeeklyStats.FantasyPointsDraftKings}</h3>
                                     </div>
                                 </div>
-                                <div className="col">
+                                <div className="col-sm-4">
                                     <div id="fanDuelWeeklyFantasyPoints">
-                                        <p>Fan Duel Fantasy Points:</p>
-                                        <h3>{rawPlayerWeeklyStats.FantasyPointsFanDuel}</h3>
+                                        <p id="fantasyWeeklyStatsText">Fan Duel Fantasy Points:</p>
+                                        <h3 id="fantasyWeeklyStats">{rawPlayerWeeklyStats.FantasyPointsFanDuel}</h3>
                                     </div>
                                 </div>
-                                <div className="col">
+                                <div className="col-sm-4">
                                     <div id="yahooWeeklyFantasyPoints">
-                                        <p>Yahoo Fantasy Points:</p>
-                                        <h3>{rawPlayerWeeklyStats.FantasyPointsYahoo}</h3>
+                                        <p id="fantasyWeeklyStatsText">Yahoo Fantasy Points:</p>
+                                        <h3 id="fantasyWeeklyStats">{rawPlayerWeeklyStats.FantasyPointsYahoo}</h3>
                                     </div>
                                 </div>
                             </div>
                             <h3>2019 Season Fantasy Stats:</h3>
                             <div className="row">
-                                <div className="col">
+                                <div className="col-sm-4">
                                     <div id="draftKingsWeeklyFantasyPoints">
-                                        <p>Draft Kings Fantasy Points:</p>
-                                        <h3>{rawPlayerSeasonStats.FantasyPointsDraftKings}</h3>
+                                        <p id="fantasyWeeklyStatsText">Draft Kings Fantasy Points:</p>
+                                        <h3 id="fantasyWeeklyStats">{rawPlayerSeasonStats.FantasyPointsDraftKings}</h3>
                                     </div>
                                 </div>
-                                <div className="col">
+                                <div className="col-sm-4">
                                     <div id="fanDuelWeeklyFantasyPoints">
-                                        <p>Fan Duel Fantasy Points:</p>
-                                        <h3>{rawPlayerSeasonStats.FantasyPointsFanDuel}</h3>
+                                        <p id="fantasyWeeklyStatsText">Fan Duel Fantasy Points:</p>
+                                        <h3 id="fantasyWeeklyStats">{rawPlayerSeasonStats.FantasyPointsFanDuel}</h3>
                                     </div>
                                 </div>
-                                <div className="col">
+                                <div className="col-sm-4">
                                     <div id="yahooWeeklyFantasyPoints">
-                                        <p>Yahoo Fantasy Points:</p>
-                                        <h3>{rawPlayerSeasonStats.FantasyPointsYahoo}</h3>
+                                        <p id="fantasyWeeklyStatsText">Yahoo Fantasy Points:</p>
+                                        <h3 id="fantasyWeeklyStats">{rawPlayerSeasonStats.FantasyPointsYahoo}</h3>
                                     </div>
                                 </div>
                             </div>
@@ -216,62 +217,68 @@ class FantasyPlayer extends Component {
                 </div>
                 <hr></hr>
                 <div className="row">
-                    <div className="col">
+                    <div className="col-sm-6">
                 <div id="fantasyPlayerWeeklyStats">
                     <div className="row">
-                        <div className="col">
+                        <div className="col-sm-4">
                             <div id="weeklyPassingStatsContainer">
                                 <div className="row">
-                                    <div className="col">
-                                        <strong><p>Weekly Passing Stats:</p></strong>
+                                    <div className="col-sm-12">
+                                        <strong><p id="fantasyWeeklyStatsText">Weekly Passing Stats:</p></strong>
                                    </div>
                                 </div>
                                 <div className="row">
-                                    <div className="col">
-                                        <p>Passing Yards:</p>
-                                        <h3 id="weeklyPassingYardsNumber">{rawPlayerWeeklyStats.PassingYards}</h3>
+                                    <div className="col-sm-12">
+                                        <p id="fantasyWeeklyStatsText">Passing Yards:</p>
+                                        <h3 id="fantasyWeeklyStats">{rawPlayerWeeklyStats.PassingYards}</h3>
                                     </div>
-                                    <div className="col">
-                                        <p>Passing Touchdowns:</p>
-                                        <h3 id="weeklyPassingTouchdownNumber">{rawPlayerWeeklyStats.PassingTouchdowns}</h3>
+                                </div>
+                                <div className="row">
+                                    <div className="col-sm-12">
+                                        <p id="fantasyWeeklyStatsText">Passing Touchdowns:</p>
+                                        <h3 id="fantasyWeeklyStats">{rawPlayerWeeklyStats.PassingTouchdowns}</h3>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="col">
+                        <div className="col-sm-4">
                             <div id="weeklyRushingStatsContainer">
                                 <div className="row">
-                                    <div className="col">
-                                        <strong><p>Weekly Rushing Stats:</p></strong>
+                                    <div className="col-sm-12">
+                                        <strong><p id="fantasyWeeklyStatsText">Weekly Rushing Stats:</p></strong>
                                    </div>
                                 </div>
                                 <div className="row">
-                                    <div className="col">
-                                        <p>Rushing Yards:</p>
-                                        <h3 id="weeklyRushingYardsNumber">{rawPlayerWeeklyStats.RushingYards}</h3>
+                                    <div className="col-sm-12">
+                                        <p id="fantasyWeeklyStatsText">Rushing Yards:</p>
+                                        <h3 id="fantasyWeeklyStats">{rawPlayerWeeklyStats.RushingYards}</h3>
                                     </div>
-                                    <div className="col">
-                                        <p>Rushing Touchdowns:</p>
-                                        <h3 id="weeklyRushingTouchdownNumber">{rawPlayerWeeklyStats.RushingTouchdowns}</h3>
+                                </div>
+                                <div className="row">
+                                    <div className="col-sm-12">
+                                        <p id="fantasyWeeklyStatsText">Rushing Touchdowns:</p>
+                                        <h3 id="fantasyWeeklyStats">{rawPlayerWeeklyStats.RushingTouchdowns}</h3>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="col">
+                        <div className="col-sm-4">
                             <div id="weeklyReceivingStatsContainer">
                                 <div className="row">
-                                    <div className="col">
-                                        <strong><p>Weekly Receiving Stats:</p></strong>
+                                    <div className="col-sm-12">
+                                        <strong><p id="fantasyWeeklyStatsText">Weekly Receiving Stats:</p></strong>
                                    </div>
                                 </div>
                                 <div className="row">
-                                    <div className="col">
-                                        <p>Receiving Yards:</p>
-                                        <h3 id="weeklyReceivingYardsNumber">{rawPlayerWeeklyStats.ReceivingYards}</h3>
+                                    <div className="col-sm-12">
+                                        <p id="fantasyWeeklyStatsText">Receiving Yards:</p>
+                                        <h3 id="fantasyWeeklyStats">{rawPlayerWeeklyStats.ReceivingYards}</h3>
                                     </div>
-                                    <div className="col">
-                                        <p>Receiving Touchdowns:</p>
-                                        <h3 id="weeklyReceivingTouchdownNumber">{rawPlayerWeeklyStats.ReceivingTouchdowns}</h3>
+                                </div>
+                                <div className="row">
+                                    <div className="col-sm-12">
+                                        <p id="fantasyWeeklyStatsText">Receiving Touchdowns:</p>
+                                        <h3 id="fantasyWeeklyStats">{rawPlayerWeeklyStats.ReceivingTouchdowns}</h3>
                                     </div>
                                 </div>
                             </div>
@@ -280,62 +287,68 @@ class FantasyPlayer extends Component {
                     </div>
                 </div>
                 </div>
-                <div className="col">
+                <div className="col-sm-6">
                     <div id="fantasyPlayerSeasonStats">
                     <div className="row">
-                        <div className="col">
+                        <div className="col-sm-4">
                             <div id="weeklyPassingStatsContainer">
                                 <div className="row">
-                                    <div className="col">
-                                        <strong><p>Season Passing Stats:</p></strong>
+                                    <div className="col-sm-12">
+                                        <strong><p id="fantasySeasonStatsText">Season Passing Stats:</p></strong>
                                    </div>
                                 </div>
                                 <div className="row">
-                                    <div className="col">
-                                        <p>Passing Yards:</p>
-                                        <h3>{rawPlayerSeasonStats.PassingYards}</h3>
+                                    <div className="col-sm-12">
+                                        <p id="fantasySeasonStatsText">Passing Yards:</p>
+                                        <h3 id="fantasySeasonStats">{rawPlayerSeasonStats.PassingYards}</h3>
                                     </div>
-                                    <div className="col">
-                                        <p>Passing Touchdowns:</p>
-                                        <h3>{rawPlayerSeasonStats.PassingTouchdowns}</h3>
+                                </div>
+                                <div className="row">
+                                    <div className="col-sm-12">
+                                        <p id="fantasySeasonStatsText">Passing Touchdowns:</p>
+                                        <h3 id="fantasySeasonStats">{rawPlayerSeasonStats.PassingTouchdowns}</h3>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="col">
+                        <div className="col-sm-4">
                             <div id="weeklyRushingStatsContainer">
                                 <div className="row">
-                                    <div className="col">
-                                        <strong><p>Season Rushing Stats:</p></strong>
+                                    <div className="col-sm-12">
+                                        <strong><p id="fantasySeasonStatsText">Season Rushing Stats:</p></strong>
                                    </div>
                                 </div>
                                 <div className="row">
-                                    <div className="col">
-                                        <p>Rushing Yards:</p>
-                                        <h3>{rawPlayerSeasonStats.RushingYards}</h3>
+                                    <div className="col-sm-12">
+                                        <p id="fantasySeasonStatsText">Rushing Yards:</p>
+                                        <h3 id="fantasySeasonStats">{rawPlayerSeasonStats.RushingYards}</h3>
                                     </div>
-                                    <div className="col">
-                                        <p>Rushing Touchdowns:</p>
-                                        <h3>{rawPlayerSeasonStats.RushingTouchdowns}</h3>
+                                </div>
+                                <div className="row">
+                                    <div className="col-sm-12">
+                                        <p id="fantasySeasonStatsText">Rushing Touchdowns:</p>
+                                        <h3 id="fantasySeasonStats">{rawPlayerSeasonStats.RushingTouchdowns}</h3>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="col">
+                        <div className="col-sm-4">
                             <div id="weeklyReceivingStatsContainer">
                                 <div className="row">
-                                    <div className="col">
-                                        <strong><p>Season Receiving Stats:</p></strong>
+                                    <div className="col-sm-12">
+                                        <strong><p id="fantasySeasonStatsText">Season Receiving Stats:</p></strong>
                                    </div>
                                 </div>
                                 <div className="row">
-                                    <div className="col">
-                                        <p>Receiving Yards:</p>
-                                        <h3>{rawPlayerSeasonStats.ReceivingYards}</h3>
+                                    <div className="col-sm-12">
+                                        <p id="fantasySeasonStatsText">Receiving Yards:</p>
+                                        <h3 id="fantasySeasonStats">{rawPlayerSeasonStats.ReceivingYards}</h3>
                                     </div>
-                                    <div className="col">
-                                        <p>Receiving Touchdowns:</p>
-                                        <h3>{rawPlayerSeasonStats.ReceivingTouchdowns}</h3>
+                                </div>
+                                <div className="row">
+                                    <div className="col-sm-12">
+                                        <p id="fantasySeasonStatsText">Receiving Touchdowns:</p>
+                                        <h3 id="fantasySeasonStats">{rawPlayerSeasonStats.ReceivingTouchdowns}</h3>
                                     </div>
                                 </div>
                             </div>

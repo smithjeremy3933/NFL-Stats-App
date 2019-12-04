@@ -8,26 +8,26 @@ class News extends Component {
             articles: ""
         }
     }
-    componentDidMount() {
+    // componentDidMount() {
 
-        let newsQueryURL =  `https://api.sportsdata.io/v3/nfl/scores/json/News?key=e785706d32a54b8f850c248da415cb73`
+    //     let newsQueryURL =  `https://api.sportsdata.io/v3/nfl/scores/json/News?key=e785706d32a54b8f850c248da415cb73`
     
-        fetch(newsQueryURL).then((response) => {
-          return response.json();
-        }).then((newsData) => {
-          console.log(newsData[0].NewsID);
-          this.setState({
-            articles: newsData[0].NewsID
-          })
-        console.log(this.state.articles)
-        })
-      }
+    //     fetch(newsQueryURL).then((response) => {
+    //       return response.json();
+    //     }).then((newsData) => {
+    //       console.log(newsData[0].NewsID);
+    //       this.setState({
+    //         articles: newsData[0].NewsID
+    //       })
+    //     console.log(this.state.articles)
+    //     })
+    //   }
 
 
     render() {
         console.log(this.state.articles)
         return (
-            <h3>News {this.state.articles}</h3>
+            <h3>News </h3>
         )
     }
 }

@@ -1,6 +1,17 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
+import SearchForm from '../SearchForm'
+import axios from 'axios'
 import './style.css'
+import * as Scroll from 'react-scroll';
+import { Link as ScrollLink, Element , Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+// var ScrollLink = Scroll.Link;
+// var DirectLink = Scroll.DirectLink;
+// var Element = Scroll.Element;
+// var Events = Scroll.Events;
+// var scroll = Scroll.animateScroll;
+// var scrollSpy = Scroll.scrollSpy;
+ 
 
 class Fantasy extends Component {
     constructor(props) {
@@ -15,13 +26,35 @@ class Fantasy extends Component {
             currentWidereceivers: [],
             currentTightends: [],
             currentViewingPlayer: [],
-            clickedArray: []
+            clickedArray: [],
+            search: ""
         }
     }
 
     componentDidMount() {
-        
-        let dailyFantasyPlayerQueryURL =  `https://api.sportsdata.io/v3/nfl/stats/json/PlayerOwnership/2019REG/13?key=e785706d32a54b8f850c248da415cb73`
+
+        Events.scrollEvent.register('begin', function () {
+          console.log("begin", arguments);
+        });
+    
+        Events.scrollEvent.register('end', function () {
+          console.log("end", arguments);
+        });
+    
+        scrollSpy.update();
+    
+      }
+      scrollToTop() {
+        scroll.scrollToTop();
+      }
+      componentWillUnmount() {
+        Events.scrollEvent.remove('begin');
+        Events.scrollEvent.remove('end');
+    }
+
+    componentDidMount() {
+        // old api call = e785706d32a54b8f850c248da415cb73
+        let dailyFantasyPlayerQueryURL =  `https://api.sportsdata.io/v3/nfl/stats/json/PlayerOwnership/2019REG/13?key=395dd5f8805a4e85baeb9951f01813e6`
         fetch(dailyFantasyPlayerQueryURL).then((response) => {
           return response.json();
         }).then((DFPData) => {
@@ -31,7 +64,7 @@ class Fantasy extends Component {
           })
         })
 
-        let topFivePlayersQueryURL =  `https://api.sportsdata.io/v3/nfl/stats/json/DailyFantasyPlayers/2019-NOV-30?key=e785706d32a54b8f850c248da415cb73`
+        let topFivePlayersQueryURL =  `https://api.sportsdata.io/v3/nfl/stats/json/DailyFantasyPlayers/2019-NOV-30?key=395dd5f8805a4e85baeb9951f01813e6`
         fetch(topFivePlayersQueryURL).then((response) => {
           return response.json();
         }).then((TFPData) => {
@@ -890,12 +923,20 @@ class Fantasy extends Component {
         var topFiveTEs = TEArray.slice(0, 5)
         this.setState({ currentPlayers: topFiveTEs })
     }
+
+    updateSearch(event) {
+        this.setState({search: event.target.value.substr(0,20)})
+    }
     
 
     render() {
         let rawPlayerData = this.state.playerData;
         let rawOwnershipData = this.state.ownershipData;
         console.log(rawPlayerData)
+
+
+        
+
         var NETeamQBArray = rawPlayerData.filter(function (el) {
             return el.Team === "NE" &&
                    el.Position === "QB"
@@ -927,6 +968,16 @@ class Fantasy extends Component {
                    el.Position === "QB" // Changed this so a home would match
         });
         var topFiveQBs = QBArray.slice(0, 5);
+        let rawPlayerDatafiltered  = rawPlayerData.filter(function (el) {
+            return el.ProjectedFantasyPoints > 0 &&
+                   el.LastGameFantasyPoints > 0 // Changed this so a home would match
+        });
+        console.log(rawPlayerDatafiltered)
+        let filteredData = rawPlayerDatafiltered.filter( 
+            (rawPlayerData) => {
+                return rawPlayerData.Name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
+            }
+        )
 
         return(
             <div id="fantasyContainer" className="container">
@@ -934,6 +985,41 @@ class Fantasy extends Component {
                     <div className="row">
                         <div className="col-sm-12">
                             <h2 id="comparisonContainerHeaderText" className="text-center">Player Comparison</h2>
+                            <div className="row">
+                                <div className="col-sm-6">
+                                    <div id="scrollBox">
+                                        <ScrollLink activeClass="active" to="firstInsideContainer" spy={true} smooth={true} duration={250} containerId="containerElement" style={{ display: 'inline-block', margin: '20px' }}>
+                                        Go to first element inside container
+                                        </ScrollLink>
+
+                                        <Element name="test7" className="element" id="containerElement" style={{
+                                        position: 'relative',
+                                        height: '200px',
+                                        overflow: 'scroll',
+                                        // marginBottom: '100px'
+                                        }}>
+                                        <div>   
+                                            <Element name="firstInsideContainer" style={{
+                                            marginBottom: '1px'
+                                            }}>
+                                            <h3>Current Search List:</h3>
+                                            </Element>
+                                            {filteredData.map(slicedData => {
+                                                                return (<h4>{slicedData.Name}</h4>)
+                                                            })}</div>
+                                        </Element>
+                                </div>
+                            </div>
+                            <div className="col-sm-6">
+                                <div id="inputContainer">
+                                    <form>
+                                        <input
+                                        onChange={this.updateSearch.bind(this)}
+                                        value={this.state.search}/>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                         </div>
                     </div>
                     <hr></hr>
@@ -1206,6 +1292,7 @@ class Fantasy extends Component {
                             </Link>
                             })}
                     </div>
+                    <button onClick={this.scrollToTop} type="button" class="btn btn-primary btn-lg btn-block">Back To Top!</button>
                 </div>
             </div>
         )

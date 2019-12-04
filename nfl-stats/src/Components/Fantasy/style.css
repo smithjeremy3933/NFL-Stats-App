@@ -24,6 +24,7 @@
     border-color: white;
 }
 
+
 #playerComparisonContainer {
     width: 100%;
     border: solid;
@@ -31,6 +32,16 @@
     border-color: black;
     border-radius: 15px;
     background-color: #1E90FF;
+}
+
+#scrollBox {
+    margin: 1%;
+    background-color: rgb(1, 82, 1);
+    border: solid;
+    border-width: 4px;
+    border-color: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
 }
 
 #comparisonInnerContainer {
@@ -246,7 +257,7 @@
     width: 380px;
     box-shadow: 0 3px 6px #999, 0 3px 6px #999;
     /* text-align: left; */
-    transition: all .6s ease-in-out;
+    /* transition: all .6s ease-in-out; */
 }
 
 #topFivePlayerNameText {

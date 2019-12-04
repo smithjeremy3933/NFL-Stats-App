@@ -10,28 +10,29 @@ class Scores extends Component {
         }
     }
 
-    componentDidMount() {
-        let scoresByWeekQueryURL =  `https://api.sportsdata.io/v3/nfl/scores/json/ScoresByWeek/2019REG/13?key=e785706d32a54b8f850c248da415cb73`
-        fetch(scoresByWeekQueryURL).then((response) => {
-          return response.json();
-        }).then((SBWData) => {
-          console.log(SBWData);
-          this.setState({
-            scoresData: SBWData
-          })
-        })
-    }
+    // componentDidMount() {
+    //     let scoresByWeekQueryURL =  `https://api.sportsdata.io/v3/nfl/scores/json/ScoresByWeek/2019REG/13?key=395dd5f8805a4e85baeb9951f01813e6`
+    //     fetch(scoresByWeekQueryURL).then((response) => {
+    //       return response.json();
+    //     }).then((SBWData) => {
+    //       console.log(SBWData);
+    //       this.setState({
+    //         scoresData: SBWData
+    //       })
+    //     })
+    // }
 
     render() {
 
-        let firstSixGames = this.state.scoresData.slice(0, 6);
-        console.log(firstSixGames[0])
+        // let firstSixGames = this.state.scoresData.slice(0, 6);
+        // console.log(firstSixGames[0])
        
         // console.log(local)
 
         return (
             <div id="scoresContainer" className="container-fluid">
-                <div id="scoresRow" className="row">
+                <h2>scores</h2>
+                {/* <div id="scoresRow" className="row">
                     <div id="scoresHeaderCol" className="col-sm-1">
                         <div id="scoresHeaderBox">
                             <h2 className="scores">Scores</h2>
@@ -223,7 +224,7 @@ class Scores extends Component {
                         </div>
                     </div>
                    
-                </div>
+                </div> */}
             </div>
         )
     }
