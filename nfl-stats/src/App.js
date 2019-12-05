@@ -9,6 +9,8 @@ import Standings from './Components/Standings';
 import News from './Components/News'
 import Scores from './Components/Scores/Scores'
 import Footer from './Components/Footer/Footer'
+import CurrentNews from './Components/CurrentNews/CurrentNews'
+//import newsnav from './Components/newsnav'; 
 
 
 
@@ -38,7 +40,7 @@ class App extends Component {
               <Route path="/fantasy" exact component = {Fantasy}/>
               <Route path="/fantasy/:id" component={FantasyPlayer}/>
               <Route path="/standings" component = {Standings}/>
-              
+              <Route path="/currentNews" component = {CurrentNews}/>
             </Switch>
           <Footer/>
         </div>
@@ -46,5 +48,15 @@ class App extends Component {
     )
   }
 }
+
+/*class App extends Component {
+  render() {
+    return( 
+      <div>
+
+      </div>
+    );
+  }
+}*/
 
 export default App;

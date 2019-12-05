@@ -1,0 +1,25 @@
+#newsContainer {
+    border: solid;
+    border-color: black;
+    border-width: 4px;
+    border-radius: 15px;
+    height: 100%;
+    background-color: aliceblue;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    text-align: center;
+}
+
+#h3 {
+    border: solid;
+    border-color: black;
+    border-width: 4px;
+    border-radius: 15px;
+    height: 100%;
+    background-color: aliceblue;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+
+}
