@@ -22,6 +22,9 @@ class Nav extends Component {
                 <Link to= "/fantasy">
                     <li>Fantasy</li>
                 </Link>
+                <Link to="/currentnews">
+                    <li>Current News</li>
+                </Link>
             </ul>
         </nav>
         )
