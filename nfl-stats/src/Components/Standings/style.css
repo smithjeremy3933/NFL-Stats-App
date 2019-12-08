@@ -1,0 +1,27 @@
+body{
+    background-color: black;
+    background-size: cover;
+    text-align: left;
+}
+thead{
+    background-color: red;
+    align-items: right;
+    font-weight: bold;
+    
+}
+tbody{
+    background-color: rgb(5, 5, 5);
+    align-items: center;
+    padding-right: 5%;
+    color: white;
+    
+  }
+  h1{
+      background-color: gray;
+  }
+
+
+
+  
+  
+

@@ -1,16 +1,15 @@
 import React, {Component, useEffect, useState} from 'react'
 import styled from "styled-components";
 
-class News extends Component {
-    constructor(props) {
-        super(props);
-        this.state= {
+ class News extends Component {
+     constructor(props) {
+         super(props);
+         this.state= {
             articles: ""
-        }
-    }
-    componentDidMount() {
+         }
+     };     componentDidMount() {
 
-        let newsQueryURL =  `https://api.sportsdata.io/v3/nfl/scores/json/News?key=e785706d32a54b8f850c248da415cb73`
+       let newsQueryURL =  `https://api.sportsdata.io/v3/nfl/scores/json/News?key=e785706d32a54b8f850c248da415cb73`
     
         fetch(newsQueryURL).then((response) => {
           return response.json();
