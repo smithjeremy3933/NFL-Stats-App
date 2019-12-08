@@ -112,42 +112,43 @@ class CurrentNews extends Component {
 
 
     componentDidMount() {
-        let playerSeasonStatsQueryURL =  `https://api.sportsdata.io/v3/nfl/scores/json/Players?key=3cbb2ec575804bf7af3b56801c45a613`
+        let playerSeasonStatsQueryURL =  `https://api.sportsdata.io/v3/nfl/stats/json/Injuries/2019REG/14?key=3cbb2ec575804bf7af3b56801c45a613`
         fetch(playerSeasonStatsQueryURL).then((response) => {
           return response.json();
         }).then((PSSData) => {
            console.log("Data", PSSData);
            let sfGiants = PSSData.filter((data) => { return data.Team === "SF" })
            let philadelphiaEagles = PSSData.filter((data) => { return data.Team === "PHI" })
-           let seattleSeahawks = PSSData.filter((data) => { return data.Team == "SEA" })
-           let losAngelesRams = PSSData.filter((data) => { return data.Team == "LAR" })
-           let chicagoBears = PSSData.filter((data) => { return data.Team == "CHI" })
-           let atlantaFalcons = PSSData.filter((data) => { return data.Team == "ATL" })
-           let carolinePanthers = PSSData.filter((data) => { return data.Team == "CAR" })
-           let baltimoreRavens = PSSData.filter((data) => { return data.Team == "BAL" })
-           let buffaloBills = PSSData.filter((data) => { return data.Team == "BUF" })
-           let cincinnattiBengals = PSSData.filter((data) => { return data.Team == "CIN" })
-           let cleavelandBrowns = PSSData.filter((data) => { return data.Team == "CLE" })
-           let washingtonRed = PSSData.filter((data) => { return data.Team == "WAS" })
-           let greenBayPackers = PSSData.filter((data) => { return data.Team == "GB" })
+           let seattleSeahawks = PSSData.filter((data) => { return data.Team === "SEA" })
+           let losAngelesRams = PSSData.filter((data) => { return data.Team === "LAR" })
+           let chicagoBears = PSSData.filter((data) => { return data.Team === "CHI" })
+           let atlantaFalcons = PSSData.filter((data) => { return data.Team === "ATL" })
+           let carolinePanthers = PSSData.filter((data) => { return data.Team === "CAR" })
+           let baltimoreRavens = PSSData.filter((data) => { return data.Team === "BAL" })
+           let buffaloBills = PSSData.filter((data) => { return data.Team === "BUF" })
+           let cincinnattiBengals = PSSData.filter((data) => { return data.Team === "CIN" })
+           let cleavelandBrowns = PSSData.filter((data) => { return data.Team === "CLE" })
+           let washingtonRed = PSSData.filter((data) => { return data.Team === "WAS" })
+           let greenBayPackers = PSSData.filter((data) => { return data.Team === "GB" })
            let detroitLions = PSSData.filter((data) => { return data.Team == "DET" })
-           let minnesotaVikings = PSSData.filter((data) => { return data.Team == "MIN" })
-           let newOrleansSaints = PSSData.filter((data) => { return data.Team == "NO" })
-           let miamiDolphins = PSSData.filter((data) => { return data.Team == "MIA" })
-           let newYorkJets = PSSData.filter((data) => { return data.Team == "NYJ" })
-           let tampaBay = PSSData.filter((data) => { return data.Team == "TB" })
-           let indianapolisColts = PSSData.filter((data) => { return data.Team == "IND" })
-           let houstonTexas = PSSData.filter((data) => { return data.Team == "HOU" })
-           let denverBroncos = PSSData.filter((data) => { return data.Team == "DEN" })
-           let losAngelesChargers = PSSData.filter((data) => { return data.Team == "LAC" })
-           let jacksonvilleJaguars = PSSData.filter((data) => { return data.Team == "JAX" })
-           let titans = PSSData.filter((data) => { return data.Team == "TEN" })
+           let minnesotaVikings = PSSData.filter((data) => { return data.Team === "MIN" })
+           let newOrleansSaints = PSSData.filter((data) => { return data.Team === "NO" })
+           let miamiDolphins = PSSData.filter((data) => { return data.Team === "MIA" })
+           let newYorkJets = PSSData.filter((data) => { return data.Team === "NYJ" })
+           let tampaBay = PSSData.filter((data) => { return data.Team === "TB" })
+           let indianapolisColts = PSSData.filter((data) => { return data.Team === "IND" })
+           let houstonTexas = PSSData.filter((data) => { return data.Team === "HOU" })
+           let denverBroncos = PSSData.filter((data) => { return data.Team === "DEN" })
+           let losAngelesChargers = PSSData.filter((data) => { return data.Team === "LAC" })
+           let jacksonvilleJaguars = PSSData.filter((data) => { return data.Team === "JAX" })
+           let titans = PSSData.filter((data) => { return data.Team === "TEN" })
            let oaklandRaiders = PSSData.filter((data) => { return data.Team == "OAK" })
-           let newEnglandPatriots = PSSData.filter((data) => { return data.Team == "NE" })
-           let kansasChiefs = PSSData.filter((data) => { return data.Team == "NE" })
-           let arizonaCardinals = PSSData.filter((data) => { return data.Team == "ARI" })
-           let pittsburghSteelers = PSSData.filter((data) => { return data.Team == "PIT" })
-           let dallasCowboys = PSSData.filter((data) => { return data.Team == "DAL" })
+           let newEnglandPatriots = PSSData.filter((data) => { return data.Team === "NE" })
+           let kansasChiefs = PSSData.filter((data) => { return data.Team === "NE" })
+           let arizonaCardinals = PSSData.filter((data) => { return data.Team === "ARI" })
+           let pittsburghSteelers = PSSData.filter((data) => { return data.Team === "PIT" })
+           let dallasCowboys = PSSData.filter((data) => { return data.Team === "DAL" })
+
 
            
 
@@ -288,7 +289,15 @@ class CurrentNews extends Component {
                        
                     </div>
 
-                    <h1>Info</h1>
+                    <div className="container">
+                        <div id="playerInfo">
+                    <h1> PLAYER INFORMATION</h1>
+                        
+                    </div>
+                    </div>
+
+                    
+                    
                     <div className="container">
                          
                   
@@ -296,7 +305,8 @@ class CurrentNews extends Component {
                         this.state.selectedTeam.length > 0 ?   this.state.selectedTeam.map((data, index) => {
                             return (
                                 <div className="row">
-                                    <p>{index} Player: {data.FirstName} {data.LastName} Injury Status {data.InjuryStatus}</p>
+                                    
+                                    <p>{index} . <b>PLAYER:</b> {data.Name}  <b>TEAM:</b> {data.Team} <b>PLAYER NUMBER:</b> {data.Number} <b>POSITION:</b> {data.Position} <b>PLAYER ID:</b> {data.PlayerID}  <b>STATUS:</b> {data.DeclaredInactive} <b>INJURY ID:</b> {data.InjuryID} <b>UPDATED:</b> {data.Updated} </p>
                                 </div>
                             )// player id and linkn to jeremys page
                             // display all the injured players by team , declared inactive true or false, position,team, when was this updated 
