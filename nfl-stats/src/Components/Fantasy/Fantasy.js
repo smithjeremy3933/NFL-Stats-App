@@ -25,6 +25,7 @@ class Fantasy extends Component {
             currentWidereceivers: [],
             currentTightends: [],
             currentViewingPlayer: [],
+            currentOwnershipArray: [],
             clickedArray: [],
             search: ""
         }
@@ -52,9 +53,10 @@ class Fantasy extends Component {
     }
 
     componentDidMount() {
+        const proxyurl = "https://cors-anywhere.herokuapp.com/";
         // old api call = e785706d32a54b8f850c248da415cb73
-        let dailyFantasyPlayerQueryURL =  `https://api.sportsdata.io/v3/nfl/stats/json/PlayerOwnership/2019REG/14?key=395dd5f8805a4e85baeb9951f01813e6`
-        fetch(dailyFantasyPlayerQueryURL).then((response) => {
+        let dailyFantasyPlayerQueryURL =  `https://api.sportsdata.io/v3/nfl/stats/json/PlayerOwnership/2019REG/14?key=44eac85464bf4939a05156483c9dc690`
+        fetch(proxyurl + dailyFantasyPlayerQueryURL).then((response) => {
           return response.json();
         }).then((DFPData) => {
         //   console.log(DFPData);
@@ -63,8 +65,8 @@ class Fantasy extends Component {
           })
         })
 
-        let topFivePlayersQueryURL =  `https://api.sportsdata.io/v3/nfl/stats/json/DailyFantasyPlayers/2019-DEC-2?key=395dd5f8805a4e85baeb9951f01813e6`
-        fetch(topFivePlayersQueryURL).then((response) => {
+        let topFivePlayersQueryURL =  `https://api.sportsdata.io/v3/nfl/stats/json/DailyFantasyPlayers/2019-DEC-9?key=395dd5f8805a4e85baeb9951f01813e6`
+        fetch(proxyurl + topFivePlayersQueryURL).then((response) => {
           return response.json();
         }).then((TFPData) => {
         //   console.log(TFPData);
@@ -928,14 +930,54 @@ class Fantasy extends Component {
     }
     
 
+    getALLOwnershipChange = () => {
+        let rawOwnershipData = this.state.ownershipData;
+        var AllOwnershipArray = rawOwnershipData.filter(function (el) {
+            return el.DeltaOwnershipPercentage > 8
+        });
+        this.setState({ currentOwnershipArray: AllOwnershipArray })
+    }
+
+    getQBOwnershipChange = () => {
+        let rawOwnershipData = this.state.ownershipData;
+        var QBOwnershipArray = rawOwnershipData.filter(function (el) {
+            return el.DeltaOwnershipPercentage > 4 &&
+                   el.Position === "QB"
+        });
+        this.setState({ currentOwnershipArray: QBOwnershipArray })
+    }
+
+    getRBOwnershipChange = () => {
+        let rawOwnershipData = this.state.ownershipData;
+        var RBOwnershipArray = rawOwnershipData.filter(function (el) {
+            return el.DeltaOwnershipPercentage > 4 &&
+                   el.Position === "RB"
+        });
+        this.setState({ currentOwnershipArray: RBOwnershipArray })
+    }
+
+    getWROwnershipChange = () => {
+        let rawOwnershipData = this.state.ownershipData;
+        var WROwnershipArray = rawOwnershipData.filter(function (el) {
+            return el.DeltaOwnershipPercentage > 4 &&
+                   el.Position === "WR"
+        });
+        this.setState({ currentOwnershipArray: WROwnershipArray })
+    }
+
+    getTEOwnershipChange = () => {
+        let rawOwnershipData = this.state.ownershipData;
+        var TEOwnershipArray = rawOwnershipData.filter(function (el) {
+            return el.DeltaOwnershipPercentage > 2 &&
+                   el.Position === "TE"
+        });
+        this.setState({ currentOwnershipArray: TEOwnershipArray })
+    }
+
     render() {
         let rawPlayerData = this.state.playerData;
         let rawOwnershipData = this.state.ownershipData;
-        console.log(rawPlayerData)
-
-
         
-
         var NETeamQBArray = rawPlayerData.filter(function (el) {
             return el.Team === "NE" &&
                    el.Position === "QB"
@@ -959,7 +1001,7 @@ class Fantasy extends Component {
         // console.log(NETeamRBArray)
 
         var AllOwnershipArray = rawOwnershipData.filter(function (el) {
-            return el.DeltaOwnershipPercentage > 18
+            return el.DeltaOwnershipPercentage > 8
         });
 
         var QBArray = rawPlayerData.filter(function (el) {
@@ -1280,12 +1322,49 @@ class Fantasy extends Component {
                         <div className="col-sm-12">
                             <div id="topTrendingHeaderBox">
                                 <h2 id="topTrendingHeaderText" className="text-center">Top Trending Players</h2>
+                                <div id="trendingButtonRow" className="row">
+                                    <div  className="col-sm-2">
+                                    <h3 id="topTrendingHeaderText">Filters: </h3>
+                                    </div>
+                                    <div className="col-sm-2">
+                                        <button id="ownershipButton" className="btn btn-outline-primary hvr-grow" onClick={this.getALLOwnershipChange}>ALL</button>
+                                    </div>
+                                    <div  className="col-sm-2">
+                                        <button id="ownershipButton" className="btn btn-outline-primary hvr-grow" onClick={this.getQBOwnershipChange}>QB</button>
+                                    </div>
+                                    <div className="col-sm-2">
+                                        <button id="ownershipButton" className="btn btn-outline-primary hvr-grow" onClick={this.getRBOwnershipChange}>RB</button>
+                                    </div>
+                                    <div className="col-sm-2">
+                                        <button id="ownershipButton" className="btn btn-outline-primary hvr-grow" onClick={this.getWROwnershipChange}>WR</button>
+                                    </div>
+                                    <div className="col-sm-2">
+                                        <button id="ownershipButton" className="btn btn-outline-primary hvr-grow" onClick={this.getTEOwnershipChange}>TE</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div id="ownershipInnerContainer">
-                    {AllOwnershipArray.map(AllOwnershipArray => {
-                    return <Link to={`/fantasy/${AllOwnershipArray.PlayerID}`}>
+                    {this.state.currentOwnershipArray.length > 0 ? this.state.currentOwnershipArray.map(filteredPlayers => {
+                        return (<Link to={`/fantasy/${filteredPlayers.PlayerID}`}>
+                        <div id="playerCard" className="card hvr-grow">
+                            <div className="row">
+                                <div className="col">
+                                    <h5 id="playerOwnershipNameText" className="text-center">{filteredPlayers.Position} {filteredPlayers.Name} ({filteredPlayers.Team})</h5>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-sm-12">
+                                    <p id="statText" className="text-center">Change in Ownership: <strong>{filteredPlayers.DeltaOwnershipPercentage}%</strong></p>
+                                </div>
+                                                
+                            </div>
+                        </div>
+                    </Link>)
+                    })
+                    : AllOwnershipArray.map(AllOwnershipArray => {
+                    return (<Link to={`/fantasy/${AllOwnershipArray.PlayerID}`}>
                                 <div id="playerCard" className="card hvr-grow">
                                     <div className="row">
                                         <div className="col">
@@ -1299,7 +1378,7 @@ class Fantasy extends Component {
                                                         
                                     </div>
                                 </div>
-                            </Link>
+                            </Link>)
                             })}
                     </div>
                     <button onClick={this.scrollToTop} type="button" class="btn btn-primary btn-lg btn-block">Back To Top!</button>

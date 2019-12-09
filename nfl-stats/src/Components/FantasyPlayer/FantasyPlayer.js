@@ -10,6 +10,7 @@ class FantasyPlayer extends Component {
             playerSeasonStats:[],
             playerWeeklyStats:[],
             fantasyPlayerName: "",
+            player_ID: 0,
             fantasyPlayerTeam: "",
             fantasyPlayerPosition: "",
             fantasyPlayerSeasonDK_FP : 0,
@@ -37,56 +38,58 @@ class FantasyPlayer extends Component {
     }
 
     componentDidMount() {
-        let playerSeasonStatsQueryURL =  `https://api.sportsdata.io/v3/nfl/projections/json/PlayerSeasonProjectionStatsByPlayerID/2019REG/${this.props.match.params.id}?key=395dd5f8805a4e85baeb9951f01813e6`
-        fetch(playerSeasonStatsQueryURL).then((response) => {
-          return response.json();
-        }).then((PSSData) => {
-          console.log(PSSData);
-          this.setState({
-            playerSeasonStats: PSSData,
-            fantasyPlayerName: PSSData.Name,
-            fantasyPlayerTeam: PSSData.Team,
-            fantasyPlayerPosition: PSSData.Position,
-            fantasyPlayerSeasonDK_FP : PSSData.FantasyPointsDraftKings,
-            fantasyPlayerSeasonFD_FP: PSSData.FantasyPointsFanDuel,
-            fantasyPlayerSeasonYOO_FP: PSSData.FantasyPointsYahoo,
-            fantasyPlayerSeasonPassingYards: PSSData.PassingYards,
-            fantasyPlayerSeasonPassingTouchdowns: PSSData.PassingTouchdowns,
-            fantasyPlayerSeasonRushingYards: PSSData.RushingYards,
-            fantasyPlayerSeasonRushingTouchdowns: PSSData.RushingTouchdowns,
-            fantasyPlayerSeasonReceivingYards: PSSData.ReceivingYards,
-            fantasyPlayerSeasonReceivingTouchdowns: PSSData.ReceivingTouchdowns
-          })
-          console.log(this.state.fantasyPlayerName)
-          console.log(this.state.fantasyPlayerSeasonFD_FP)
-        })
+        // let playerSeasonStatsQueryURL =  `https://api.sportsdata.io/v3/nfl/projections/json/PlayerSeasonProjectionStatsByPlayerID/2019REG/${this.props.match.params.id}?key=395dd5f8805a4e85baeb9951f01813e6`
+        // fetch(playerSeasonStatsQueryURL).then((response) => {
+        //   return response.json();
+        // }).then((PSSData) => {
+        //   console.log(PSSData);
+        //   this.setState({
+        //     playerSeasonStats: PSSData,
+        //     fantasyPlayerName: PSSData.Name,
+        //     player_ID:PSSData.PlayerID,
+        //     fantasyPlayerTeam: PSSData.Team,
+        //     fantasyPlayerPosition: PSSData.Position,
+        //     fantasyPlayerSeasonDK_FP : PSSData.FantasyPointsDraftKings,
+        //     fantasyPlayerSeasonFD_FP: PSSData.FantasyPointsFanDuel,
+        //     fantasyPlayerSeasonYOO_FP: PSSData.FantasyPointsYahoo,
+        //     fantasyPlayerSeasonPassingYards: PSSData.PassingYards,
+        //     fantasyPlayerSeasonPassingTouchdowns: PSSData.PassingTouchdowns,
+        //     fantasyPlayerSeasonRushingYards: PSSData.RushingYards,
+        //     fantasyPlayerSeasonRushingTouchdowns: PSSData.RushingTouchdowns,
+        //     fantasyPlayerSeasonReceivingYards: PSSData.ReceivingYards,
+        //     fantasyPlayerSeasonReceivingTouchdowns: PSSData.ReceivingTouchdowns
+        //   })
+        //   console.log(this.state.fantasyPlayerName)
+        //   console.log(this.state.fantasyPlayerSeasonFD_FP)
+        // })
 
-        let playerWeeklyStatsQueryURL =  `https://api.sportsdata.io/v3/nfl/projections/json/PlayerGameProjectionStatsByPlayerID/2019REG/14/${this.props.match.params.id}?key=395dd5f8805a4e85baeb9951f01813e6`
-        fetch(playerWeeklyStatsQueryURL).then((response) => {
-          return response.json();
-        }).then((PWSData) => {
-          console.log(PWSData);
-          this.setState({
-            playerWeeklyStats: PWSData,
-            fantasyPlayerWeeklyDK_FP : PWSData.FantasyPointsDraftKings,
-            fantasyPlayerWeeklyFD_FP: PWSData.FantasyPointsFanDuel,
-            fantasyPlayerWeeklyYOO_FP: PWSData.FantasyPointsYahoo,
-            fantasyPlayerWeeklyPassingYards: PWSData.PassingYards,
-            fantasyPlayerWeeklyPassingTouchdowns: PWSData.PassingTouchdowns,
-            fantasyPlayerWeeklyRushingYards: PWSData.RushingYards,
-            fantasyPlayerWeeklyRushingTouchdowns: PWSData.RushingTouchdowns,
-            fantasyPlayerWeeklyReceivingYards: PWSData.ReceivingYards,
-            fantasyPlayerWeeklyReceivingTouchdowns: PWSData.ReceivingTouchdowns
-          })
-          console.log(this.state.fantasyPlayerWeeklyFD_FP)
-        //   console.log(this.props)
-        })
+        // let playerWeeklyStatsQueryURL =  `https://api.sportsdata.io/v3/nfl/projections/json/PlayerGameProjectionStatsByPlayerID/2019REG/14/${this.props.match.params.id}?key=395dd5f8805a4e85baeb9951f01813e6`
+        // fetch(playerWeeklyStatsQueryURL).then((response) => {
+        //   return response.json();
+        // }).then((PWSData) => {
+        //   console.log(PWSData);
+        //   this.setState({
+        //     playerWeeklyStats: PWSData,
+        //     fantasyPlayerWeeklyDK_FP : PWSData.FantasyPointsDraftKings,
+        //     fantasyPlayerWeeklyFD_FP: PWSData.FantasyPointsFanDuel,
+        //     fantasyPlayerWeeklyYOO_FP: PWSData.FantasyPointsYahoo,
+        //     fantasyPlayerWeeklyPassingYards: PWSData.PassingYards,
+        //     fantasyPlayerWeeklyPassingTouchdowns: PWSData.PassingTouchdowns,
+        //     fantasyPlayerWeeklyRushingYards: PWSData.RushingYards,
+        //     fantasyPlayerWeeklyRushingTouchdowns: PWSData.RushingTouchdowns,
+        //     fantasyPlayerWeeklyReceivingYards: PWSData.ReceivingYards,
+        //     fantasyPlayerWeeklyReceivingTouchdowns: PWSData.ReceivingTouchdowns
+        //   })
+        //   console.log(this.state.fantasyPlayerWeeklyFD_FP)
+        // //   console.log(this.props)
+        // })
     }
 
     handleSavePlayer = (event) => {
         event.preventDefault();
         fetch("http://localhost:8000/api/new-player", {
             body: JSON.stringify({ player_name: this.state.fantasyPlayerName,
+                                   player_ID: this.state.player_ID,
                                    player_team: this.state.fantasyPlayerTeam,
                                    player_position: this.state.fantasyPlayerPosition,
                                    player_weekly_DK_FP: this.state.fantasyPlayerWeeklyDK_FP,

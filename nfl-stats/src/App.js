@@ -6,7 +6,7 @@ import Nav from './Components/Nav'
 import Fantasy from './Components/Fantasy/Fantasy'
 import FantasyPlayer from './Components/FantasyPlayer/FantasyPlayer'
 import FantasyComparison from './Components/FantasyComparison/FantasyComparison'
-import Standings from './Components/Standings';
+import Standings from './Components/Standings/Standings';
 import News from './Components/News'
 import Scores from './Components/Scores/Scores'
 import Footer from './Components/Footer/Footer'
