@@ -4,63 +4,111 @@
     border-width: 4px;
     border-radius: 15px;
     height: 100%;
-    background-color: aliceblue;
+    background-color: #1E90FF;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-#draftKingsWeeklyFantasyPoints {
+#playerImage {
+    width: 100%;
+    height: 100%;
     border: solid;
-    border-color: black;
     border-width: 4px;
-    border-radius: 15px;
+    border-color: white;
+    border-radius: 10px;
+}
+
+#fantasyPlayerHeader {
+    background-color: rgb(1, 82, 1);
+    margin-top: 1%;
+    margin-bottom: 2%;
+    padding: 1%;
+    border: solid;
+    border-width: 4px;
+    border-color: white;
+    border-radius: 10px;
+    width: 99%;
+}
+
+#saveButton {
+    width: 90%;
+    background-color: rgb(214, 143, 12);
+    color: white;
+    text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+    border: solid;
+    border-width: 3px;
+    border-color: black;
+    border-radius: 10px;
+}
+
+#indFantasyPlayer {
+    color: white;
+    text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+}
+
+#draftKingsWeeklyFantasyPoints {
+    background-color: rgb(1, 82, 1);
+    border: solid;
+    border-width: 4px;
+    border-color: white;
+    border-radius: 10px;
     padding: 5px;
 }
 
 #yahooWeeklyFantasyPoints {
+    background-color: rgb(1, 82, 1);
     border: solid;
-    border-color: black;
     border-width: 4px;
-    border-radius: 15px;
+    border-color: white;
+    border-radius: 10px;
     padding: 5px;
 }
 
 #fanDuelWeeklyFantasyPoints {
+    background-color: rgb(1, 82, 1);
     border: solid;
-    border-color: black;
     border-width: 4px;
-    border-radius: 15px;
+    border-color: white;
+    border-radius: 10px;
     padding: 5px;
+
 }
 
 #weeklyPassingStatsContainer {
+    background-color: rgb(1, 82, 1);
     border: solid;
-    border-color: black;
     border-width: 4px;
-    border-radius: 15px;
+    border-color: white;
+    border-radius: 10px;
     padding: 5px;
     width: 100%;
     height: 100%;
+    margin: 1%;
 }
 
 #weeklyRushingStatsContainer {
+    background-color: rgb(1, 82, 1);
     border: solid;
-    border-color: black;
     border-width: 4px;
-    border-radius: 15px;
+    border-color: white;
+    border-radius: 10px;
     padding: 5px;
     width: 100%;
     height: 100%;
+    margin: 1%;
 }
 
 #weeklyReceivingStatsContainer {
+    background-color: rgb(1, 82, 1);
     border: solid;
-    border-color: black;
     border-width: 4px;
-    border-radius: 15px;
+    border-color: white;
+    border-radius: 10px;
     padding: 5px;
     width: 100%;
     height: 100%;
+    margin: 1%;
 }
 
 #fantasyPlayerWeeklyStats {
@@ -71,27 +119,28 @@
     margin-bottom: 10px;
 }
 
-#weeklyPassingYardsNumber {
+#fantasyWeeklyStatsText {
     text-align: center;
+    color: white;
+    text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
 }
 
-#weeklyPassingTouchdownNumber {
+#fantasySeasonStatsText {
     text-align: center;
+    color: white;
+    text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
 }
 
-#weeklyRushingYardsNumber {
+#fantasyWeeklyStats {
     text-align: center;
+    color: white;
+    text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
 }
 
-#weeklyRushingTouchdownNumber {
+#fantasySeasonStats {
     text-align: center;
+    color: white;
+    text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
 }
 
-#weeklyReceivingYardsNumber {
-    text-align: center;
-}
-
-#weeklyReceivingTouchdownNumber {
-    text-align: center;
-}
 

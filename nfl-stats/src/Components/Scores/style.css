@@ -1,8 +1,137 @@
 #scoresContainer {
-    color: blue;
-    background-color: aliceblue;
+    color: black;
+    background-color: white;
     border: solid;
     border-color: black;
     border-width: 4px;
+    height: 130px;
+}
+
+#scoresRow {
+    height: 100%;
+}
+
+.scoreDetailBreaks {
+    margin: 0px;
+}
+
+#scoresHeaderBox {
+    /* border: solid; */
+    border-right: solid;
+    border-color: black;
+    border-width: 2px;
+    height: 100%;
+    
+}
+
+#scoresHeaderCol {
+    padding: 0px;
+}
+
+.scoresBox1 {
+    border-right: solid;
+    border-color: black;
+    border-width: 2px;
+    height: 100%;
+    width: 100%;
+}
+
+#gameDetailsRow {
+    height: 30px;
+    width: 100%;
+    margin: 0px;
+    background-color: #1E90FF
+}
+
+#scoresBoxCol {
+    padding: 0px 0px 0px 0px;
+}
+
+#scoresDateRow {
+    background-color: rgb(1, 82, 1);
+    height: 90px;
+    width: 100%;
+    margin: 0px;
+    /* margin: 15px; */
+}
+
+#colWithRightBorder {
+    border-right: solid;
+    border-color: white;
+    border-width: 1px;
+    padding-right: 8%;
+    padding-top: 5%;
+    height: 95%;
+}
+
+/* #homeTeamNameBox {
+    height: 20px;
+} */
+
+#teamScoresRow {
+    display: flex;
+    justify-content: center;
+}
+
+#teamTimeCol {
+    padding: 5px;
+    height: 95%;
+}
+
+#teamTimeBox {
+    color: white;
+    font-size: 75%;
+}
+
+#homeTeamBox {
+    height: 25px;
+}
+
+#homeTeamNameBox {
+    height: 25px;
+    border-top: solid;
+    border-bottom: solid;
+    border-color: white;
+    border-width: 1px;
+}
+
+#awayTeamBox {
+    margin-top: 15%;
+    height: 25px;
+}
+
+#awayTeamNameBox {
+    height: 25px;
+    border-top: solid;
+    border-bottom: solid;
+    border-color: white;
+    border-width: 1px;
+}
+
+#awayTeamText {
+    color: white;
+    font-size: 85%;
+}
+
+#homeTeamText {
+    color: white;
+    font-size: 85%;
+}
+
+.hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+    transform: scale(1.1);
 }
 

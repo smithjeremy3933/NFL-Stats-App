@@ -23,8 +23,8 @@
 
 body {
   /* background-color: blue; */
-  background: url("footballFieldBackground.jpg");
-  background-size: cover;
+  background: url("field.jpg");
+  /* background-size: cover; */
   min-height: calc(94vh - 70px);
 }
 
