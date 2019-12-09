@@ -10,7 +10,7 @@ import Standings from './Components/Standings/Standings';
 import News from './Components/News'
 import Scores from './Components/Scores/Scores'
 import Footer from './Components/Footer/Footer'
-// import QuarterbackColumn from './Components/QuarterbackColumn/QuarterbackColumn'
+import CurrentNews from './Components/CurrentNews/CurrentNews'
 
 
 
@@ -39,7 +39,7 @@ class App extends Component {
               <Route path="/fantasy/:id" component={FantasyPlayer}/>
               <Route path="/fantasy-comparison" component={FantasyComparison} currentPlayerList = {this.state.selectedPlayers}/>
               <Route path="/standings" component = {Standings}/>
-              
+              <Route path="/currentNews" component = {CurrentNews}/>
             </Switch>
           <Footer/>
         </div>
@@ -47,5 +47,15 @@ class App extends Component {
     )
   }
 }
+
+/*class App extends Component {
+  render() {
+    return( 
+      <div>
+
+      </div>
+    );
+  }
+}*/
 
 export default App;
