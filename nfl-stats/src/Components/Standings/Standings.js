@@ -1,7 +1,7 @@
 import React, { Component, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './style.css';
-import styled from "styled-components";
+import APIKey from "../keys";
  
 
 class Standings extends Component {
@@ -14,10 +14,10 @@ class Standings extends Component {
 
   }
   componentDidMount() {
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    let queryURL = `https://api.sportsdata.io/v3/nfl/scores/json/Standings/2019REG?key=44eac85464bf4939a05156483c9dc690`;
+    // const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    let queryURL = `https://api.sportsdata.io/v3/nfl/scores/json/Standings/2019REG?key=${APIKey}`;
 
-    fetch(proxyurl + queryURL).then((response) => {
+    fetch(queryURL).then((response) => {
       return response.json();
     }).then((data) => {
       console.log(data);

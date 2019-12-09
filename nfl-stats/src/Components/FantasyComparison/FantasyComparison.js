@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom'
 import * as Scroll from 'react-scroll';
 import { Link as ScrollLink, Element , Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 import PlayerCard from "../PlayerCard"
-import PlayerStatsDisplay from "../PlayerStatsDisplay";
 import TeamCard from "../TeamCard"
+import APIKey from "../keys";
 
 class FantasyComparison extends Component {
     constructor(props) {
@@ -53,8 +53,8 @@ class FantasyComparison extends Component {
       })
     });
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    let seasonTeamStatsQueryURL =  `https://api.sportsdata.io/v3/nfl/stats/json/FantasyDefenseBySeason/2019REG?key=395dd5f8805a4e85baeb9951f01813e6`
-        fetch(proxyurl + seasonTeamStatsQueryURL).then((response) => {
+    let seasonTeamStatsQueryURL =  `https://api.sportsdata.io/v3/nfl/stats/json/FantasyDefenseBySeason/2019REG?key=${APIKey}`
+        fetch(seasonTeamStatsQueryURL).then((response) => {
           return response.json();
         }).then((STSData) => {
         //   console.log(DFPData);
@@ -66,13 +66,13 @@ class FantasyComparison extends Component {
     }
 
     handleClick = id => {
-      if (this.state.clickedArray = []) {
+      if (this.state.clickedArray === []) {
         this.setState({ clickedArray: this.state.clickedArray.concat([id]) })
       }
     }
 
     handleTeamClick = team => {
-      if (this.state.clickedTeamArray = []) {
+      if (this.state.clickedTeamArray === []) {
         this.setState({ clickedTeamArray: this.state.clickedTeamArray.concat([team]) })
       }
       console.log(this.state.clickedTeamArray)
@@ -138,10 +138,20 @@ class FantasyComparison extends Component {
                 <div id="comparisonSearchRow" className="row">
                   <div className="col-sm-6">
                       <div id="scrollBoxSavedPlayer">
-                        <button onClick={this.getComparisonQBs}>QB</button>
-                        <button onClick={this.getComparisonRBs}>RB</button>
-                        <button onClick={this.getComparisonWRs}>WR</button>
-                        <button onClick={this.getComparisonTEs}>TE</button>
+                        <div className="row">
+                          <div className="col-sm-3">
+                            <button id ="topFiveButton" onClick={this.getComparisonQBs}>QB</button>
+                          </div>
+                          <div className="col-sm-3">
+                            <button id ="topFiveButton" onClick={this.getComparisonRBs}>RB</button>
+                          </div>
+                          <div className="col-sm-3">
+                            <button id ="topFiveButton" onClick={this.getComparisonWRs}>WR</button>
+                          </div>
+                          <div className="col-sm-3">
+                            <button id ="topFiveButton" onClick={this.getComparisonTEs}>TE</button>
+                          </div>
+                        </div>
                         <ScrollLink className="text-center" activeClass="active" to="firstInsideContainer" spy={true} smooth={true} duration={250} containerId="containerElement" style={{ margin: '20px' }}>
                             <button id="backToTopScrollButton" className="hvr-grow">Back to Top!</button>
                         </ScrollLink>

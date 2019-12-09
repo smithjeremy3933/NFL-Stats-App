@@ -1,0 +1,20 @@
+#navBox {
+    height: 100px;
+    width: 100%;
+    padding: 3%;
+    color: white;
+    text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+    background-color: rgb(1, 82, 1);
+    border-bottom: solid;
+    border-width: 4px;
+    border-color: white;
+}
+
+.navbar {
+    padding: 0px;
+}
+
+#linkText {
+    color: white;
+    text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+}

@@ -1,15 +1,9 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import axios from 'axios'
 import './style.css'
 import * as Scroll from 'react-scroll';
 import { Link as ScrollLink, Element , Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
-// var ScrollLink = Scroll.Link;
-// var DirectLink = Scroll.DirectLink;
-// var Element = Scroll.Element;
-// var Events = Scroll.Events;
-// var scroll = Scroll.animateScroll;
-// var scrollSpy = Scroll.scrollSpy;
+import APIKey from "../keys";
  
 
 class Fantasy extends Component {
@@ -53,10 +47,10 @@ class Fantasy extends Component {
     }
 
     componentDidMount() {
-        const proxyurl = "https://cors-anywhere.herokuapp.com/";
-        // old api call = e785706d32a54b8f850c248da415cb73
-        let dailyFantasyPlayerQueryURL =  `https://api.sportsdata.io/v3/nfl/stats/json/PlayerOwnership/2019REG/14?key=44eac85464bf4939a05156483c9dc690`
-        fetch(proxyurl + dailyFantasyPlayerQueryURL).then((response) => {
+        // const proxyurl = "https://cors-anywhere.herokuapp.com/";
+      
+        let dailyFantasyPlayerQueryURL =  `https://api.sportsdata.io/v3/nfl/stats/json/PlayerOwnership/2019REG/14?key=${APIKey}`
+        fetch(dailyFantasyPlayerQueryURL).then((response) => {
           return response.json();
         }).then((DFPData) => {
         //   console.log(DFPData);
@@ -65,8 +59,8 @@ class Fantasy extends Component {
           })
         })
 
-        let topFivePlayersQueryURL =  `https://api.sportsdata.io/v3/nfl/stats/json/DailyFantasyPlayers/2019-DEC-9?key=395dd5f8805a4e85baeb9951f01813e6`
-        fetch(proxyurl + topFivePlayersQueryURL).then((response) => {
+        let topFivePlayersQueryURL =  `https://api.sportsdata.io/v3/nfl/stats/json/DailyFantasyPlayers/2019-DEC-9?key=${APIKey}`
+        fetch(topFivePlayersQueryURL).then((response) => {
           return response.json();
         }).then((TFPData) => {
         //   console.log(TFPData);
