@@ -23,7 +23,7 @@ class Nav extends Component {
                     <li>Fantasy</li>
                 </Link>
                 <Link to="/currentnews">
-                    <li>Current News</li>
+                    <li>Player Information</li>
                 </Link>
             </ul>
         </nav>
