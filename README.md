@@ -6,7 +6,7 @@ NFL-Stats-App is an React based app that lets you check for updated information 
 REACT EXPRESS MYSQL NODE JAVASCRIPT HTML CSS AXIOS
 
 ## Screenshot
-![screenshot](./public/screenshot.png =100x20)
+![screenshot](https://github.com/smithjeremy3933/NFL-Stats-App/blob/standings/nfl-stats/public/screenshot.png =100x20)
 ![screenshot](./public/screenshot1.png =100x20)
 ![screenshot](./public/screenshot2.png =100x20)
 
